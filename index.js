@@ -30,6 +30,29 @@ class LinkedList {
         }
         this.size++;
     }
+
+    size() {
+        return this.size;
+    }
+
+    head() {
+        return this.head;
+    }
+
+    tail() {
+        return this.tail;
+    }
+    
+    // returns the node at the given index, null if out of bounds
+    at(index) {
+        let currNode = index >= 0 ? this.head : null;
+        for (let i = 0; i < index; i++) {
+            currNode = currNode.nextNode;
+            if (currNode === null)
+                return currNode;
+        }
+        return currNode;
+    }
 }
 
 class Node {
@@ -42,9 +65,9 @@ class Node {
 let list = new LinkedList();
 
 
-list.append("bye");
-list.prepend("bye before");
+// Testing area
+list.append("third");
+list.prepend("second");
 list.prepend("first!!");
-
 
 console.log(list)
