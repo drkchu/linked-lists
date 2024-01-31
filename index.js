@@ -83,17 +83,48 @@ class LinkedList {
 
     // returns true if the linked list contains the current value, false otherwise
     contains(value) {
-        // TODO
+        let currNode = this.head;
+        while (currNode !== null) {
+            if (currNode.value === value)
+                return true;
+            currNode = currNode.nextNode;
+        }
+        return false;
     }
 
-    // returns the index of the node containing value, or null if not found
+    // returns the index (zero-based) of the node containing value, or null if not found
     find(value) {
-        // TODO
+        let currIndex = 0;
+        let currNode = this.head;
+
+        if (!(this.contains(value))) {
+            return null;
+        }
+
+        while (currNode !== null) {
+            if (currNode.value === value) {
+                return currIndex;
+            }
+            currIndex++;
+            currNode = currNode.nextNode;
+        }
+
+        return null;
+ 
     }
 
     // ( value ) -> ( value ) -> ( value ) -> null
     toString() {
-        return 'TODO'
+        let result = '';
+        let currNode = this.head;
+
+        while (currNode !== null) {
+            result += `( ${currNode.value} ) -> `
+            currNode = currNode.nextNode
+        }
+
+        result += 'null'
+        return result;
     }
 }
 
@@ -111,5 +142,7 @@ let list = new LinkedList();
 list.append("third");
 list.prepend("second");
 list.prepend("first!!");
+list.prepend("first!!");
+list.prepend("first!!");
 
-console.log(list.toString())
+console.log(list.toString());
