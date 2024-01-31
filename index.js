@@ -53,6 +53,48 @@ class LinkedList {
         }
         return currNode;
     }
+
+    // removes and returns the last element in the list, null if empty
+    pop() {
+        if (this.size === 0)
+            return null;
+
+        if (this.size === 1) {
+            let toReturn = this.head;
+            this.size = 0;
+            this.head = null;
+            this.tail = null;
+            return toReturn;
+        }
+
+        // Assuming that there's at least 2 nodes in the list, iterate through keeping track of a curr and prev node, then adjust pointers accordingly
+        let prevNode = this.head;
+        let currNode = this.head.nextNode;
+
+        while (currNode.nextNode !== null) {
+            prevNode = currNode;
+            currNode = currNode.nextNode;
+        }
+
+        prevNode.nextNode = null;
+        this.tail = prevNode;
+        this.size--;
+    }
+
+    // returns true if the linked list contains the current value, false otherwise
+    contains(value) {
+        // TODO
+    }
+
+    // returns the index of the node containing value, or null if not found
+    find(value) {
+        // TODO
+    }
+
+    // ( value ) -> ( value ) -> ( value ) -> null
+    toString() {
+        return 'TODO'
+    }
 }
 
 class Node {
@@ -70,4 +112,4 @@ list.append("third");
 list.prepend("second");
 list.prepend("first!!");
 
-console.log(list)
+console.log(list.toString())
